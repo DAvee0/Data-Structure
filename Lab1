@@ -1,0 +1,89 @@
+//PreFinal
+
+//import java.util.HashMap;
+import java.util.*;
+
+public class StudentDirectory{
+    public static void main (String[] args){
+     Scanner sc = new Scanner(System.in);
+
+     HashMap<String, String> studentList = new HashMap<>();
+
+     System.out.println("Enter the number of students: ");
+     int n  = sc.nextInt();
+     sc.nextLine();
+
+     for(int i = 0; i < n; i++){
+
+        System.out.println("Enter student number: ");
+        String studNum = sc.nextLine();
+
+        System.out.println("Enter student name: ");
+        String studName = sc.nextLine();
+
+        studentList.put(studNum, studName);
+     }
+     System.out.println("Student Directory:  " + studentList);
+
+     int choice;
+     boolean isLooping = true;
+     do{
+        System.out.println("Choose an operataion");
+        System.out.println("1 - Search. 2 - Remove. 3 - Add/Update");
+
+        System.out.print("Enter your choice: ");
+        choice = sc.nextInt();
+        sc.nextLine();
+
+        switch(choice){
+
+            case 1: 
+            System.out.print("Enter student number: ");
+            String searchNum = sc.nextLine();
+
+            if (studentList.get(searchNum)!= null){
+                System.out.println("Student Number: "+ studentList.get(searchNum));
+            } else {
+                System.out.println("Student not found!");
+            }
+            break;
+            
+
+            case 2:
+            System.out.print("Enter Student Number: ");
+            String removeNum = sc.nextLine();
+
+            if (studentList.get(removeNum)!= null){
+                System.out.println("Remove Student Number: "+ studentList.get(removeNum));
+                studentList.remove(removeNum);
+                System.out.println("Updated Student Directory: "+studentList);
+            } else {
+                System.out.println("Student not found!");
+            }
+            break;
+
+            
+            case 3:
+            System.out.print("Enter Student Number: ");
+            String newNum = sc.nextLine();
+            System.out.println("Enter Student Name: ");
+            String newName = sc.nextLine();
+
+
+            if (studentList.get(newNum)!= null){
+                studentList.put(newNum, newName);
+                System.out.println("Student Data Updated ");
+                System.out.println("Updated Student Directory: "+studentList);
+
+            } else {
+                 studentList.put(newNum, newName);
+                 System.out.println("Student Data Added! ");
+                System.out.println("Updated Student Directory: "+ studentList);
+            }
+            break;
+            default:
+            System.out.println("Invalid Input!");
+        }
+     }while(isLooping == true);
+    }
+}
